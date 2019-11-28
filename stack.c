@@ -44,3 +44,19 @@ void shrink( struct Stack *stack )
     stack->a = ( int * ) realloc( stack->a, sizeof( int ) *stack->size );
     
 }
+int isempty( struct Stack *stack )
+{
+
+   return stack->top == 0 ? 1 : 0; 
+
+}
+int pop( struct Stack *stack )
+{
+
+    if( stack->top <= stack->size / 3 && stack->size > 10 )
+        shrink( stack );
+
+    return stack->a[stack->top--];
+}
+
+
