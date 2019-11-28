@@ -1,7 +1,7 @@
 struct Stack;
 int isempty();
-void push( struct Stack*, int );
+void push( struct Stack *, int );
 int pop();
-void grow( int* );
-void shrink( int* );
+void grow( struct Stack * );
+void shrink( struct Stack * );
 

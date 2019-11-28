@@ -1,5 +1,6 @@
 #include "hstack.h"
-int main( int argc, char* argv[] )
+#include <stdlib.h>
+int main( int argc, char *argv[] )
 {
 
     return 0;
@@ -8,7 +9,7 @@ int main( int argc, char* argv[] )
 struct Stack
 {
     int top; //the index of the top element
-    int a[10];
+    int *a;
     int size;
 
 };
@@ -18,19 +19,23 @@ struct Stack new_stack()
     struct Stack s;
     s.top = 0;
     s.size = 10;
+    s.a = (int *) malloc( sizeof(int) * s.size ); 
+
     return s;
 }
 
-void push( struct Stack* stack, int data )
+void push( struct Stack *stack, int data )
 {
     if( stack->top >= stack->size )
-        grow( stack->a );
+        grow( stack );
 
     stack->a[stack->top++] = data;  
 }
 
-void grow( int* a )
+void grow( struct Stack *stack )
 {
-    return;
-    
+    stack->size *= 2;  
+    stack->a = realloc( (int *) sizeof(int) * size );
+
 }
+
