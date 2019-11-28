@@ -1,10 +1,6 @@
 #include "hstack.h"
 #include <stdlib.h>
-int main( int argc, char *argv[] )
-{
-
-    return 0;
-}
+#include <stdio.h>
 
 struct Stack
 {
@@ -36,12 +32,15 @@ void grow( struct Stack *stack )
 {
     stack->size *= 2;  
     stack->a = (int *) realloc( stack->a, sizeof( int ) * stack->size );
+    printf( "I HAVE GROWN \n" );
 
 }
 void shrink( struct Stack *stack )
 {
     stack->size /= 2;
     stack->a = ( int * ) realloc( stack->a, sizeof( int ) *stack->size );
+    printf( "I HAVE SHRUNK \n" );
+
     
 }
 int isempty( struct Stack *stack )
@@ -58,5 +57,40 @@ int pop( struct Stack *stack )
 
     return stack->a[stack->top--];
 }
+
+int main( int argc, char *argv[] )
+{
+    
+    struct Stack s = new_stack();
+
+    int i;
+    for( i=0; i < 20; i++ )
+        push( &s, i );
+    
+    printf( "%d\n", s.size );
+    
+    for( ; i > 0; i-- )
+        printf( "%d\n", pop( &s ));
+    
+    printf( "%d\n", s.top );
+    printf( isempty( &s ) ? "IT'S EMPTY BOSS\n" : "IT AIN'T EMPTY BOSS\n" );
+
+
+
+    free( s.a );
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
