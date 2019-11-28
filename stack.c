@@ -46,7 +46,7 @@ void shrink( struct Stack *stack )
 int isempty( struct Stack *stack )
 {
 
-   return stack->top == 0 ? 1 : 0; 
+   return stack->top == 0; 
 
 }
 int pop( struct Stack *stack )
