@@ -35,7 +35,7 @@ void push( struct Stack *stack, int data )
 void grow( struct Stack *stack )
 {
     stack->size *= 2;  
-    stack->a = realloc( (int *) sizeof(int) * size );
+    stack->a = (int *) realloc( stack->a, sizeof(int) * stack->size );
 
 }
 
